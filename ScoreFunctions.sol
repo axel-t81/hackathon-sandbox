@@ -45,7 +45,7 @@ contract ScoreFunctions is FunctionsClient {
     string public source =
         "const fixtureid = args[0];"
         "const apiResponse = await Functions.makeHttpRequest({"
-        "url: `https://api.sportmonks.com/v3/football/fixtures/fixtureid?api_token=M0BhRHqbYoKRc0fCayVCoS03GWkQujtirwR13jn9zEIYyveGUVpaAZ8K33aC&includes=scores',"
+        "url: `https://api.sportmonks.com/v3/football/fixtures/fixtureid?api_token=MY_API_TOKEN_ENTERED_HERE&includes=scores',"
         "responseType: 'text'"
         "});"
         "if (apiResponse.error) {"
