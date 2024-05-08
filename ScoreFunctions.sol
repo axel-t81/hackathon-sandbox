@@ -42,18 +42,30 @@ contract ScoreFunctions is FunctionsClient {
 
     // JavaScript source code
     // STUCK HERE: NEED TO COME BACK HERE
-    string public source =
-        "const fixtureid = args[0];"
+    string source =
+        "const characterId = args[0];"
         "const apiResponse = await Functions.makeHttpRequest({"
-        "url: `https://api.sportmonks.com/v3/football/fixtures/fixtureid?api_token=MY_API_TOKEN_ENTERED_HERE&includes=scores',"
-        "responseType: 'text'"
+        "url: `https://swapi.dev/api/people/${characterId}/`"
         "});"
         "if (apiResponse.error) {"
         "throw Error('Request failed');"
         "}"
         "const { data } = apiResponse;"
-        "return Functions.encodeString(data);";
+        "return Functions.encodeString(data.name);";
+    //string public source =
+    //    "const fixtureid = args[0];"
+    //    "const apiResponse = await Functions.makeHttpRequest({"
+    //    "url: `https://api.sportmonks.com/v3/football/fixtures/fixtureid?api_token=MY_API_TOKEN_ENTERED_HERE&includes=scores',"
+    //    "responseType: 'text'"
+    //    "});"
+    //    "if (apiResponse.error) {"
+    //    "throw Error('Request failed');"
+    //    "}"
+    //    "const { data } = apiResponse;"
+    //    "return Functions.encodeString(data);";
     // STUCK HERE: NEED TO COME BACK HERE
+    string public character;
+
     string public lastFixtureID;
     string public lastHome;
     string public lastAway;
@@ -68,12 +80,11 @@ contract ScoreFunctions is FunctionsClient {
     //* (3) And then DON will fulfill the request and push the data on-chain
 
     // This is the function to send the request to the DON; the first step
-    function getScores(
-        string memory _fixtureID,
+    function getScore(
+        string memory _fixtureID
     ) external returns (bytes32 requestId) {
-        string[] memory args = new string[](2);
-        args[0] = _lastHome;
-        args[1] = _lastAway;
+        string[] memory args = new string[](1);
+        args[0] = _fixtureID;
 
         FunctionsRequest.Request memory req;
         req.initializeRequestForInlineJavaScript(source); // Initialize the request with JS code
