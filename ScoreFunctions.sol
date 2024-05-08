@@ -53,17 +53,23 @@ contract ScoreFunctions is FunctionsClient {
         "}"
         "const { data } = apiResponse;"
         "return Functions.encodeString(data);";
-    string public lastFixture;
+    // STUCK HERE: NEED TO COME BACK HERE
+    string public lastFixtureID;
     string public lastHome;
     string public lastAway;
 
+    // The contstructor that initialises data when contract is created
     constructor(uint64 subscriptionId) FunctionsClient(router) {
         s_subscriptionId = subscriptionId;
     }
 
+    //* Chainlink Functions works by (1) sending a request to the DON
+    //* (2) Letting the DON call the API off-chain
+    //* (3) And then DON will fulfill the request and push the data on-chain
+
+    // This is the function to send the request to the DON; the first step
     function getScores(
-        string memory _lastHome,
-        string memory _lastAway
+        string memory _fixtureID,
     ) external returns (bytes32 requestId) {
         string[] memory args = new string[](2);
         args[0] = _lastHome;
@@ -80,8 +86,7 @@ contract ScoreFunctions is FunctionsClient {
             gasLimit,
             donID
         );
-        lastHome = _lastHome;
-        lastAway = _lastAway;
+        lastFixtureID = _fixtureID;
 
         return s_lastRequestId;
     }
@@ -92,6 +97,7 @@ contract ScoreFunctions is FunctionsClient {
      * @param response The HTTP response data
      * @param err Any errors from the Functions request
      */
+    // This is the function that fulfills the request; the third and final step
     function fulfillRequest(
         bytes32 requestId,
         bytes memory response,
