@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<script>
+const request = new XMLHttpRequest();
+request.open('GET', 'https://api.sportmonks.com/v3/football/fixtures/18535517');
+request.send();
+
+request.addEventListener('load', function() {
+  console.log(this.responseText);
+});
+</script>
+
+</body>
+</html>
