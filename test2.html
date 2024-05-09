@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<script>
+const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v3.1/name/australia');
+request.send();
+
+request.addEventListener('load', function() {
+    // Parse the JSON data into a JavScript Object
+    const data = JSON.parse(this.responseText)[0]
+    // or
+    // const [data] = JSON.parse(this.responseText)
+    console.log(data)
+});
+
+const name1 = ${data.name[0].official};
+console.log(name1);
+
+const capital = ${data.capital};
+console.log(capital);
+
+</script>
+
+</body>
+</html>
