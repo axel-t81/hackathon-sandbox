@@ -13,14 +13,17 @@ contract hackathonStory2 is ERC721, ERC721URIStorage, Ownable {
 
     // Metadata information for each stage of the NFT on IPFS.
     string[] IpfsUri = [
-        "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmRijcgF56WZJLT2F1c5rLdRFyJJUkxyUNZg2PGcnN62Z5",
-        "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmXTBSXK6TuYvkJnJYaY2YC6kLGR9wAe95D2KsCp14ENzW"
+        "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmQm2s6jWP3W6imUrKGwCg3khcoZRsKb2Uv4wCpx7gnL5o",
+        "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmcEy3HbvQyv97f4ai4iqwmm27G64q3QffuRi28v4g6TnJ"
     ];
 
     uint256 lastTimeStamp;
     uint256 interval;
 
-    constructor(uint256 _interval) ERC721("dNFTs", "dNFT") {
+    constructor(
+        uint256 _interval
+    ) ERC721("NoobLink Ninjas Testing Collection", "TCKT") {
+        //constructor() ERC721("NoobLink Ninjas Testing Collection", "TCKT") {
         interval = _interval;
         lastTimeStamp = block.timestamp;
     }
@@ -30,18 +33,13 @@ contract hackathonStory2 is ERC721, ERC721URIStorage, Ownable {
     )
         external
         view
-        returns (
-            bool upkeepNeeded,
-            bytes memory /* performData */
-        )
+        returns (bool upkeepNeeded, bytes memory /* performData */)
     {
         upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
         // We don't use the checkData in this example. The checkData is defined when the Upkeep was registered.
     }
 
-    function performUpkeep(
-        bytes calldata /* performData */
-    ) external {
+    function performUpkeep(bytes calldata /* performData */) external {
         //We highly recommend revalidating the upkeep in the performUpkeep function
         if ((block.timestamp - lastTimeStamp) > interval) {
             lastTimeStamp = block.timestamp;
@@ -86,30 +84,25 @@ contract hackathonStory2 is ERC721, ERC721URIStorage, Ownable {
      ********************
      */
     // helper function to compare strings
-    function compareStrings(string memory a, string memory b)
-        public
-        pure
-        returns (bool)
-    {
+    function compareStrings(
+        string memory a,
+        string memory b
+    ) public pure returns (bool) {
         return (keccak256(abi.encodePacked((a))) ==
             keccak256(abi.encodePacked((b))));
     }
 
     // The following functions are overrides required by Solidity.
 
-    function _burn(uint256 tokenId)
-        internal
-        override(ERC721, ERC721URIStorage)
-    {
+    function _burn(
+        uint256 tokenId
+    ) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
 
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
+    function tokenURI(
+        uint256 tokenId
+    ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
         return super.tokenURI(tokenId);
     }
 }

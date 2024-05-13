@@ -1,0 +1,16 @@
+{
+  "description": "NoobLink Ninjas dNFT Pre-Game state.", 
+  "external_url": "https://github.com/axel-t81/hackathon-sandbox", 
+  "image": "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmVKCe2ZcN195aMrYhPFbfBsqhSri9FAoucTJ8Fz4W8Nug", 
+  "name": "Pre-Game dNFT Ticket",
+  "attributes": [
+      {
+        "trait_type": "Away Team Goals Scored:", 
+        "value": 0
+      }, 
+      {
+        "trait_type": "Home Team Goals Scored:", 
+        "value": 0
+      }
+    ]
+}
