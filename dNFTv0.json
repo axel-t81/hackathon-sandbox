@@ -1,0 +1,20 @@
+// Guides found OpenSea NFT Meta Data Standards https://docs.opensea.io/docs/metadata-standards#metadata-structure
+// Guides around building JSON file found via freeCodeCamp https://forum.freecodecamp.org/t/how-to-create-your-own-json-file-locally/147357
+// Thought behind creating own JSON file came from inspecting example Remix Code from this guide https://docs.chain.link/quickstarts/dynamic-metadata
+
+{
+  "description": "NoobLink Ninjas dNFT state 0.", 
+  "external_url": "https://github.com/axel-t81/hackathon-sandbox", 
+  "image": "https://black-reasonable-grouse-549.mypinata.cloud/ipfs/QmWmLd2LvFqkTdSb9NXqRzHBQRPbb3HoGAoK8Yt4N1rKvh", 
+  "name": "Starting match scores",
+  "attributes": [
+      {
+        "trait_type": "Home Team Score", 
+        "value": 0
+      }, 
+      {
+        "trait_type": "Away Team Score", 
+        "value": 0
+      }
+    ]
+}
