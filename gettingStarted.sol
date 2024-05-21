@@ -50,7 +50,7 @@ contract GettingStartedFunctionsConsumer is FunctionsClient, ConfirmedOwner {
         "console.log('There was an error, mate.');"
         "throw new Error('Request failed, mate.');"
         "}"
-        "let dataPoint1 = apiResponse.data[0].length;"
+        "let dataPoint1 = apiResponse.data[0].venue_id;"
         "console.log(dataPoint1);"
         "return Functions.encodeUint256(Math.round(dataPoint1));";
 
